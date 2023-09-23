@@ -1,9 +1,49 @@
 # Skybrud.Social.Mastodon
 
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/abjerner/Skybrud.Social.Mastodon/blob/v1/main/LICENSE.md)
+[![NuGet](https://img.shields.io/nuget/vpre/Skybrud.Social.Mastodon.svg)](https://www.nuget.org/packages/Skybrud.Social.Mastodon)
+[![NuGet](https://img.shields.io/nuget/dt/Skybrud.Social.Mastodon.svg)](https://www.nuget.org/packages/Skybrud.Social.Mastodon)
+
+
 .NET API wrapper and implementation of the Mastodon API.
 
+<table>
+  <tr>
+    <td><strong>License:</strong></td>
+    <td><a href="https://github.com/abjerner/Skybrud.Social.Mastodon/blob/v1/main/LICENSE.md"><strong>MIT License</strong></a></td>
+  </tr>
+  <tr>
+    <td><strong>Target Framework:</strong></td>
+    <td>
+      .NET Standard 2.0, .NET 6 and .NET 7
+    </td>
+  </tr>
+</table>
 
 
+
+
+
+<br /><br />
+
+## Installation
+
+The package is only available via [**NuGet**](https://www.nuget.org/packages/Skybrud.Social.Mastodon/1.0.0-alpha001). To install the package, you can either use the .NET CLI:
+
+```
+dotnet add package Skybrud.Social.Mastodon --version 1.0.0-alpha001
+```
+
+or the NuGet Package Manager:
+
+```
+Install-Package Skybrud.Social.Mastodon -Version 1.0.0-alpha001
+```
+
+
+
+
+<br /><br />
 
 ## Examples
 
