@@ -12,6 +12,7 @@
     <VersionPrefix>1.0.0-alpha000</VersionPrefix>
     <VersionSuffix Condition="'$(Configuration)'=='Debug'">build$([System.DateTime]::UtcNow.ToString(`yyyyMMddHHmm`))</VersionSuffix>
     <Company>Limbo</Company>
+    <Product>Skybrud.Social</Product>
     <Authors>Anders Bjerner</Authors>
     <Copyright>Copyright © $([System.DateTime]::UtcNow.ToString(`yyyy`))</Copyright>
     <Description>.NET API wrapper and implementation of the Mastodon API.</Description>
@@ -20,15 +21,23 @@
   <!-- Information for the NuGet package -->
   <PropertyGroup>
     <PackageId>Skybrud.Social.Mastodon</PackageId>
+    <PackageTags>Mastodon, Skybrud, Social, OAuth, JSON, Limbo, API</PackageTags>
+    <PackageProjectUrl>https://skybrud.social/mastodon/</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageIcon>Limbo.png</PackageIcon>
     <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/abjerner/Skybrud.Social.Mastodon</RepositoryUrl>
   </PropertyGroup>
 
   <!-- Include NuGet dependencies -->
   <ItemGroup>
     <PackageReference Include="Skybrud.Essentials.Http" Version="1.1.4" />
     <PackageReference Include="JetBrains.Annotations" Version="2022.1.0" PrivateAssets="All" />
+  </ItemGroup>
+
+  <!-- Include package icon for NuGet -->
+  <ItemGroup>
+    <Content Include="../build/Limbo.png" Pack="true" PackagePath="\" />
   </ItemGroup>
 
   <!-- Generate XML documentation -->
