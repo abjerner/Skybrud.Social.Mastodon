@@ -83,6 +83,43 @@ public class MastodonStatus : MastodonObject {
     public string? Language { get; }
 
     /// <summary>
+    /// Gets the URI of the status. <strong>This property is not documented by the Mastodon API documentation.</strong>
+    /// </summary>
+    public string? Uri { get; }
+
+    /// <summary>
+    /// A link to the status’s HTML representation.
+    /// </summary>
+    /// <see>
+    ///     <cref>https://docs.joinmastodon.org/entities/Status/#url</cref>
+    /// </see>
+    public string? Url { get; }
+
+    /// <summary>
+    /// How many replies this status has received.
+    /// </summary>
+    /// <see>
+    ///     <cref>https://docs.joinmastodon.org/entities/Status/#replies_count</cref>
+    /// </see>
+    public int RepliesCount { get; }
+
+    /// <summary>
+    /// How many boosts this status has received.
+    /// </summary>
+    /// <see>
+    ///     <cref>https://docs.joinmastodon.org/entities/Status/#reblogs_count</cref>
+    /// </see>
+    public int ReblogsCount { get; }
+
+    /// <summary>
+    /// Gets a timestamp for when the status was last edited, or <see langword="null"/> if the status hasn't been edited.
+    /// </summary>
+    /// <see>
+    ///     <cref>https://docs.joinmastodon.org/entities/Status/#edited_at</cref>
+    /// </see>
+    public EssentialsTime? EditedAt { get; }
+
+    /// <summary>
     /// Gets how many favourites this status has received.
     /// </summary>
     /// <see>
@@ -147,7 +184,12 @@ public class MastodonStatus : MastodonObject {
         SpoilerText = json.GetString("spoiler_text")!;
         Visibility = json.GetEnum<MastodonStatusVisibility>("visibility");
         Language = json.GetString("language");
+        Uri = json.GetString("uri");
+        Url = json.GetString("url");
+        RepliesCount = json.GetInt32("replies_count");
+        ReblogsCount = json.GetInt32("reblogs_count");
         FavouritesCount = json.GetInt32("favourites_count");
+        EditedAt = json.GetString("edited_at", EssentialsTime.Parse);
         Content = json.GetString("content")!;
         Account = json.GetObject("account", MastodonAccount.Parse)!;
         MediaAttachments = json.GetArrayItems("media_attachments", MastodonMediaAttachment.Parse);
@@ -169,6 +211,5 @@ public class MastodonStatus : MastodonObject {
     }
 
     #endregion
-
 
 }
