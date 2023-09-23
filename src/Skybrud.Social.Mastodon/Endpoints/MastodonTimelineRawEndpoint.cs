@@ -90,24 +90,6 @@ public class MastodonTimelineRawEndpoint {
         return await Client.GetResponseAsync(options);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     /// <summary>
     /// Returns the public timeline.
     /// </summary>
