@@ -1,0 +1,43 @@
+﻿using System;
+using Skybrud.Social.Mastodon.Endpoints;
+
+namespace Skybrud.Social.Mastodon;
+
+/// <summary>
+/// Class working as an entry point to making requests to the various endpoints of the Mastodon API.
+/// </summary>
+public class MastodonHttpService {
+
+    #region Properties
+
+    /// <summary>
+    /// Gets a reference to the underlying HTTP client.
+    /// </summary>
+    public MastodonHttpClient Client { get; }
+
+    /// <summary>
+    /// Gets a reference to the <strong>Track</strong> API.
+    /// </summary>
+    public MastodonTimelineEndpoint Timelines { get; }
+
+    #endregion
+
+    #region Constructors
+
+    /// <summary>
+    /// Returns a new instance of <see cref="MastodonHttpService"/> based on the specified <paramref name="domain"/>.
+    /// </summary>
+    /// <param name="domain">The domain of the Mastodon server.</param>
+    public MastodonHttpService(string domain) {
+
+        if (string.IsNullOrWhiteSpace(domain)) throw new ArgumentNullException(nameof(domain));
+
+        Client = new MastodonHttpClient(domain);
+
+        Timelines = new MastodonTimelineEndpoint(this);
+
+    }
+
+    #endregion
+
+}
