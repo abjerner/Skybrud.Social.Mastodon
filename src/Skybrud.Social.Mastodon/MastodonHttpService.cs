@@ -40,4 +40,19 @@ public class MastodonHttpService {
 
     #endregion
 
+    #region Static methods
+
+    /// <summary>
+    /// Creates a new <see cref="MastodonHttpService"/> based on the specified <paramref name="domain"/>. This instance
+    /// can be used for accessing public information.
+    /// </summary>
+    /// <param name="domain">The domain of the Mastodon server.</param>
+    /// <returns>An instance of <see cref="MastodonHttpService"/>.</returns>
+    public static MastodonHttpService CreateFromDomain(string domain) {
+        if (string.IsNullOrWhiteSpace(domain)) throw new ArgumentNullException(nameof(domain));
+        return new MastodonHttpService(domain);
+    }
+
+    #endregion
+
 }
