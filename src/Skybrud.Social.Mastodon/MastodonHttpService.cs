@@ -21,6 +21,11 @@ public class MastodonHttpService {
     public MastodonAccountsEndpoint Accounts { get; }
 
     /// <summary>
+    /// Gets a reference to the <strong>Statuses</strong> API.
+    /// </summary>
+    public MastodonStatusesEndpoint Statuses { get; }
+
+    /// <summary>
     /// Gets a reference to the <strong>Timelines</strong> API.
     /// </summary>
     public MastodonTimelineEndpoint Timelines { get; }
@@ -40,6 +45,7 @@ public class MastodonHttpService {
         Client = new MastodonHttpClient(domain);
 
         Accounts = new MastodonAccountsEndpoint(this);
+        Statuses = new MastodonStatusesEndpoint(this);
         Timelines = new MastodonTimelineEndpoint(this);
 
     }

@@ -29,7 +29,7 @@ namespace Skybrud.Social.Mastodon.Exceptions {
         /// Initializes a new exception based on the specified <paramref name="response"/>.
         /// </summary>
         /// <param name="response">The instance of <see cref="IHttpResponse"/> representing the raw response.</param>
-        public MastodonHttpException(IHttpResponse response) : base("Invalid response received from the Mastodon API (Status: " + (int) response.StatusCode + ")") {
+        public MastodonHttpException(IHttpResponse response) : base("Invalid response received from the Mastodon API (status: " + (int) response.StatusCode + ")") {
             Response = response;
         }
 

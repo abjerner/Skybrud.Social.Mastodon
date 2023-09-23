@@ -35,6 +35,11 @@ public class MastodonHttpClient : HttpClient {
     /// </summary>
     public MastodonTimelineRawEndpoint Timelines { get; }
 
+    /// <summary>
+    /// Gets a reference to the raw <strong>Statuses</strong> endpoint.
+    /// </summary>
+    public MastodonStatusesRawEndpoint Statuses { get; }
+
     #endregion
 
     #region Constructors
@@ -53,6 +58,7 @@ public class MastodonHttpClient : HttpClient {
         Domain = domain;
 
         Accounts = new MastodonAccountsRawEndpoint(this);
+        Statuses = new MastodonStatusesRawEndpoint(this);
         Timelines = new MastodonTimelineRawEndpoint(this);
 
     }
