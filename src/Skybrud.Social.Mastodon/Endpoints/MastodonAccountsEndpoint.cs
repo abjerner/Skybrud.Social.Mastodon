@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Skybrud.Essentials.Http;
 using Skybrud.Social.Mastodon.Options.Accounts;
-using Skybrud.Social.Mastodon.Responses.Statuses;
+using Skybrud.Social.Mastodon.Responses.Accounts;
 
 namespace Skybrud.Social.Mastodon.Endpoints;
 

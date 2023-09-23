@@ -1,7 +1,7 @@
 ﻿using Skybrud.Essentials.Http;
 using Skybrud.Social.Mastodon.Models.Accounts;
 
-namespace Skybrud.Social.Mastodon.Responses.Statuses;
+namespace Skybrud.Social.Mastodon.Responses.Accounts;
 
 /// <summary>
 /// Class representing a response from the Toggl API.
