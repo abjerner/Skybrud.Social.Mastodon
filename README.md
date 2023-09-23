@@ -5,7 +5,7 @@
 [![NuGet](https://img.shields.io/nuget/dt/Skybrud.Social.Mastodon.svg)](https://www.nuget.org/packages/Skybrud.Social.Mastodon)
 
 
-.NET API wrapper and implementation of the Mastodon API.
+.NET API wrapper and implementation of the [**Mastodon API**](https://docs.joinmastodon.org/client/intro/).
 
 <table>
   <tr>
