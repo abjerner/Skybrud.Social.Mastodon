@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Skybrud.Essentials.Http;
+﻿using Skybrud.Essentials.Http;
 using Skybrud.Social.Mastodon.Models.Statuses;
 
 namespace Skybrud.Social.Mastodon.Responses.Statuses;
@@ -7,7 +6,7 @@ namespace Skybrud.Social.Mastodon.Responses.Statuses;
 /// <summary>
 /// Class representing a response from the Toggl API.
 /// </summary>
-public class MastodonStatusListResponse : MastodonResponse<IReadOnlyList<MastodonStatus>> {
+public class MastodonStatusListResponse : MastodonListResponse<MastodonStatus> {
 
     /// <summary>
     /// Initializes a new instance based on the specified <paramref name="response"/>.

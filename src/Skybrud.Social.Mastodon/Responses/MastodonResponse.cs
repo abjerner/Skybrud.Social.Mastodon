@@ -11,11 +11,6 @@ namespace Skybrud.Social.Mastodon.Responses;
 public class MastodonResponse : HttpResponseBase {
 
     /// <summary>
-    ///
-    /// </summary>
-    public MastodonLinkHeader Link { get; }
-
-    /// <summary>
     /// Gets rate limiting information about the response.
     /// </summary>
     public MastodonRateLimit RateLimit { get; }
@@ -25,7 +20,6 @@ public class MastodonResponse : HttpResponseBase {
     /// </summary>
     /// <param name="response">The instance of <see cref="IHttpResponse"/> representing the raw response.</param>
     public MastodonResponse(IHttpResponse response) : base(response) {
-        Link = MastodonLinkHeader.Parse(response);
         RateLimit = new MastodonRateLimit(response);
         if (response.StatusCode == HttpStatusCode.OK) return;
         if (response.StatusCode == HttpStatusCode.Created) return;
