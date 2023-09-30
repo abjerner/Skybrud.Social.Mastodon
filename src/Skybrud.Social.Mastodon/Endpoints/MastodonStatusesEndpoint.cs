@@ -42,6 +42,102 @@ public class MastodonStatusesEndpoint {
     #region Member methods
 
     /// <summary>
+    /// Bookmarks the status with the specified <paramref name="id"/>.
+    /// </summary>
+    /// <param name="id">The ID of the status to bookmark.</param>
+    /// <returns>An instance of <see cref="MastodonStatusResponse"/> representing the response.</returns>
+    /// <see>
+    ///     <cref>https://docs.joinmastodon.org/methods/statuses/#bookmark</cref>
+    /// </see>
+    public MastodonStatusResponse BookmarkStatus(string id) {
+        return new MastodonStatusResponse(Raw.BookmarkStatus(id));
+    }
+
+    /// <summary>
+    /// Bookmarks the status identified by the specified <paramref name="options"/>.
+    /// </summary>
+    /// <param name="options">The options for the request to the API.</param>
+    /// <returns>An instance of <see cref="MastodonStatusResponse"/> representing the response.</returns>
+    /// <see>
+    ///     <cref>https://docs.joinmastodon.org/methods/statuses/#bookmark</cref>
+    /// </see>
+    public MastodonStatusResponse BookmarkStatus(MastodonBookmarkStatusOptions options) {
+        return new MastodonStatusResponse(Raw.BookmarkStatus(options));
+    }
+
+    /// <summary>
+    /// Bookmarks the status with the specified <paramref name="id"/>.
+    /// </summary>
+    /// <param name="id">The ID of the status to bookmark.</param>
+    /// <returns>An instance of <see cref="MastodonStatusResponse"/> representing the response.</returns>
+    /// <see>
+    ///     <cref>https://docs.joinmastodon.org/methods/statuses/#bookmark</cref>
+    /// </see>
+    public async Task<MastodonStatusResponse> BookmarkStatusAsync(string id) {
+        return new MastodonStatusResponse(await Raw.BookmarkStatusAsync(id));
+    }
+
+    /// <summary>
+    /// Bookmarks the status identified by the specified <paramref name="options"/>.
+    /// </summary>
+    /// <param name="options">The options for the request to the API.</param>
+    /// <returns>An instance of <see cref="MastodonStatusResponse"/> representing the response.</returns>
+    /// <see>
+    ///     <cref>https://docs.joinmastodon.org/methods/statuses/#bookmark</cref>
+    /// </see>
+    public async Task<MastodonStatusResponse> BookmarkStatusAsync(MastodonBookmarkStatusOptions options) {
+        return new MastodonStatusResponse(await Raw.BookmarkStatusAsync(options));
+    }
+
+    /// <summary>
+    /// Favourites the status with the specified <paramref name="id"/>.
+    /// </summary>
+    /// <param name="id">The ID of the status to favourite.</param>
+    /// <returns>An instance of <see cref="MastodonStatusResponse"/> representing the response.</returns>
+    /// <see>
+    ///     <cref>https://docs.joinmastodon.org/methods/statuses/#favourite</cref>
+    /// </see>
+    public MastodonStatusResponse FavouriteStatus(string id) {
+        return new MastodonStatusResponse(Raw.FavouriteStatus(id));
+    }
+
+    /// <summary>
+    /// Favourites the status identified by the specified <paramref name="options"/>.
+    /// </summary>
+    /// <param name="options">The options for the request to the API.</param>
+    /// <returns>An instance of <see cref="MastodonStatusResponse"/> representing the response.</returns>
+    /// <see>
+    ///     <cref>https://docs.joinmastodon.org/methods/statuses/#favourite</cref>
+    /// </see>
+    public MastodonStatusResponse FavouriteStatus(MastodonFavouriteStatusOptions options) {
+        return new MastodonStatusResponse(Raw.FavouriteStatus(options));
+    }
+
+    /// <summary>
+    /// Favourites the status with the specified <paramref name="id"/>.
+    /// </summary>
+    /// <param name="id">The ID of the status to favourite.</param>
+    /// <returns>An instance of <see cref="MastodonStatusResponse"/> representing the response.</returns>
+    /// <see>
+    ///     <cref>https://docs.joinmastodon.org/methods/statuses/#favourite</cref>
+    /// </see>
+    public async Task<MastodonStatusResponse> FavouriteStatusAsync(string id) {
+        return new MastodonStatusResponse(await Raw.FavouriteStatusAsync(id));
+    }
+
+    /// <summary>
+    /// Favourites the status identified by the specified <paramref name="options"/>.
+    /// </summary>
+    /// <param name="options">The options for the request to the API.</param>
+    /// <returns>An instance of <see cref="MastodonStatusResponse"/> representing the response.</returns>
+    /// <see>
+    ///     <cref>https://docs.joinmastodon.org/methods/statuses/#favourite</cref>
+    /// </see>
+    public async Task<MastodonStatusResponse> FavouriteStatusAsync(MastodonFavouriteStatusOptions options) {
+        return new MastodonStatusResponse(await Raw.FavouriteStatusAsync(options));
+    }
+
+    /// <summary>
     /// Returns information about the status with specified <paramref name="id"/>.
     /// </summary>
     /// <param name="id">The ID of the status.</param>
