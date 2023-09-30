@@ -82,6 +82,30 @@ public class MastodonStatusesRawEndpoint {
         return await Client.GetResponseAsync(options);
     }
 
+    /// <summary>
+    /// Publishes a new status described by the specified <paramref name="options"/>..
+    /// </summary>
+    /// <param name="options">The options for the request to the API.</param>
+    /// <returns>An instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
+    /// <see>
+    ///     <cref>https://docs.joinmastodon.org/methods/statuses/#create</cref>
+    /// </see>
+    public IHttpResponse PostStatus(MastodonPostStatusOptions options) {
+        return Client.GetResponse(options);
+    }
+
+    /// <summary>
+    /// Publishes a new status described by the specified <paramref name="options"/>..
+    /// </summary>
+    /// <param name="options">The options for the request to the API.</param>
+    /// <returns>An instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
+    /// <see>
+    ///     <cref>https://docs.joinmastodon.org/methods/statuses/#create</cref>
+    /// </see>
+    public async Task<IHttpResponse> PostStatusAsync(MastodonPostStatusOptions options) {
+        return await Client.GetResponseAsync(options);
+    }
+
     #endregion
 
 }
