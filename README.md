@@ -28,16 +28,16 @@
 
 ## Installation
 
-The package is only available via [**NuGet**](https://www.nuget.org/packages/Skybrud.Social.Mastodon/1.0.0-alpha001). To install the package, you can either use the .NET CLI:
+The package is only available via [**NuGet**](https://www.nuget.org/packages/Skybrud.Social.Mastodon/1.0.0-alpha002). To install the package, you can either use the .NET CLI:
 
 ```
-dotnet add package Skybrud.Social.Mastodon --version 1.0.0-alpha001
+dotnet add package Skybrud.Social.Mastodon --version 1.0.0-alpha002
 ```
 
 or the NuGet Package Manager:
 
 ```
-Install-Package Skybrud.Social.Mastodon -Version 1.0.0-alpha001
+Install-Package Skybrud.Social.Mastodon -Version 1.0.0-alpha002
 ```
 
 
