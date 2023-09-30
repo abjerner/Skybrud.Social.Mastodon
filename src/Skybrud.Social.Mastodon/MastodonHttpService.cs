@@ -34,15 +34,9 @@ public class MastodonHttpService {
 
     #region Constructors
 
-    /// <summary>
-    /// Returns a new instance of <see cref="MastodonHttpService"/> based on the specified <paramref name="domain"/>.
-    /// </summary>
-    /// <param name="domain">The domain of the Mastodon server.</param>
-    public MastodonHttpService(string domain) {
+    private MastodonHttpService(MastodonHttpClient client) {
 
-        if (string.IsNullOrWhiteSpace(domain)) throw new ArgumentNullException(nameof(domain));
-
-        Client = new MastodonHttpClient(domain);
+        Client = client;
 
         Accounts = new MastodonAccountsEndpoint(this);
         Statuses = new MastodonStatusesEndpoint(this);
@@ -62,7 +56,19 @@ public class MastodonHttpService {
     /// <returns>An instance of <see cref="MastodonHttpService"/>.</returns>
     public static MastodonHttpService CreateFromDomain(string domain) {
         if (string.IsNullOrWhiteSpace(domain)) throw new ArgumentNullException(nameof(domain));
-        return new MastodonHttpService(domain);
+        return new MastodonHttpService(new MastodonHttpClient(domain));
+    }
+
+    /// <summary>
+    /// Creates a new <see cref="MastodonHttpService"/> based on the specified <paramref name="domain"/> and
+    /// <paramref name="accessToken"/>. This instance can be used for making authorized request on behalf of a user.
+    /// </summary>
+    /// <param name="domain">The domain of the Mastodon server.</param>
+    /// <param name="accessToken">The user's access token.</param>
+    /// <returns>An instance of <see cref="MastodonHttpService"/>.</returns>
+    public static MastodonHttpService CreateFromAccessToken(string domain, string accessToken) {
+        if (string.IsNullOrWhiteSpace(domain)) throw new ArgumentNullException(nameof(domain));
+        return new MastodonHttpService(new MastodonHttpClient(domain, accessToken));
     }
 
     #endregion

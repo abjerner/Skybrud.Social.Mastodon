@@ -26,6 +26,11 @@ public class MastodonHttpClient : HttpClient {
 #endif
 
     /// <summary>
+    /// Gets or sets an access token to be used for authenticated requests.
+    /// </summary>
+    public string? AccessToken { get; set; }
+
+    /// <summary>
     /// Gets a reference to the raw <strong>Accounts</strong> endpoint.
     /// </summary>
     public MastodonAccountsRawEndpoint Accounts { get; }
@@ -61,6 +66,19 @@ public class MastodonHttpClient : HttpClient {
         Statuses = new MastodonStatusesRawEndpoint(this);
         Timelines = new MastodonTimelineRawEndpoint(this);
 
+    }
+
+    /// <summary>
+    /// Initializes a new instance based on the specified <paramref name="domain"/> and <paramref name="accessToken"/>.
+    /// </summary>
+    /// <param name="domain">The domain of the Mastodon server.</param>
+    /// <param name="accessToken">The user's access token.</param>
+#if NET7_0_OR_GREATER
+    [SetsRequiredMembers]
+#endif
+    public MastodonHttpClient(string domain, string accessToken) : this(domain) {
+        if (string.IsNullOrWhiteSpace(accessToken)) throw new ArgumentNullException(nameof(accessToken));
+        AccessToken = accessToken;
     }
 
     #endregion
