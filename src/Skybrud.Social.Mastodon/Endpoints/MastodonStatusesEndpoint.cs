@@ -113,6 +113,54 @@ public class MastodonStatusesEndpoint {
         return new MastodonStatusResponse(await Raw.PostStatusAsync(options));
     }
 
+    /// <summary>
+    /// Reblogs the status with the specified <paramref name="id"/>.
+    /// </summary>
+    /// <param name="id">The ID of the status to reblog.</param>
+    /// <returns>An instance of <see cref="MastodonStatusResponse"/> representing the response.</returns>
+    /// <see>
+    ///     <cref>https://docs.joinmastodon.org/methods/statuses/#boost</cref>
+    /// </see>
+    public MastodonStatusResponse ReblogStatus(string id) {
+        return new MastodonStatusResponse(Raw.ReblogStatus(id));
+    }
+
+    /// <summary>
+    /// Reblogs the status identified by the specified <paramref name="options"/>.
+    /// </summary>
+    /// <param name="options">The options for the request to the API.</param>
+    /// <returns>An instance of <see cref="MastodonStatusResponse"/> representing the response.</returns>
+    /// <see>
+    ///     <cref>https://docs.joinmastodon.org/methods/statuses/#boost</cref>
+    /// </see>
+    public MastodonStatusResponse ReblogStatus(MastodonReblogStatusOptions options) {
+        return new MastodonStatusResponse(Raw.ReblogStatus(options));
+    }
+
+    /// <summary>
+    /// Reblogs the status with the specified <paramref name="id"/>.
+    /// </summary>
+    /// <param name="id">The ID of the status to reblog.</param>
+    /// <returns>An instance of <see cref="MastodonStatusResponse"/> representing the response.</returns>
+    /// <see>
+    ///     <cref>https://docs.joinmastodon.org/methods/statuses/#boost</cref>
+    /// </see>
+    public async Task<MastodonStatusResponse> ReblogStatusAsync(string id) {
+        return new MastodonStatusResponse(await Raw.ReblogStatusAsync(id));
+    }
+
+    /// <summary>
+    /// Reblogs the status identified by the specified <paramref name="options"/>.
+    /// </summary>
+    /// <param name="options">The options for the request to the API.</param>
+    /// <returns>An instance of <see cref="MastodonStatusResponse"/> representing the response.</returns>
+    /// <see>
+    ///     <cref>https://docs.joinmastodon.org/methods/statuses/#boost</cref>
+    /// </see>
+    public async Task<MastodonStatusResponse> ReblogStatusAsync(MastodonReblogStatusOptions options) {
+        return new MastodonStatusResponse(await Raw.ReblogStatusAsync(options));
+    }
+
     #endregion
 
 }

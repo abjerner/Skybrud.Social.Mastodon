@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Skybrud.Essentials.Http;
 using Skybrud.Social.Mastodon.Options.Statuses;
 
@@ -103,6 +104,58 @@ public class MastodonStatusesRawEndpoint {
     ///     <cref>https://docs.joinmastodon.org/methods/statuses/#create</cref>
     /// </see>
     public async Task<IHttpResponse> PostStatusAsync(MastodonPostStatusOptions options) {
+        return await Client.GetResponseAsync(options);
+    }
+
+    /// <summary>
+    /// Reblogs the status with the specified <paramref name="id"/>.
+    /// </summary>
+    /// <param name="id">The ID of the status to reblog.</param>
+    /// <returns>An instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
+    /// <see>
+    ///     <cref>https://docs.joinmastodon.org/methods/statuses/#boost</cref>
+    /// </see>
+    public IHttpResponse ReblogStatus(string id) {
+        if (string.IsNullOrWhiteSpace(id)) throw new ArgumentNullException(nameof(id));
+        return ReblogStatus(new MastodonReblogStatusOptions(id));
+    }
+
+    /// <summary>
+    /// Reblogs the status identified by the specified <paramref name="options"/>.
+    /// </summary>
+    /// <param name="options">The options for the request to the API.</param>
+    /// <returns>An instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
+    /// <see>
+    ///     <cref>https://docs.joinmastodon.org/methods/statuses/#boost</cref>
+    /// </see>
+    public IHttpResponse ReblogStatus(MastodonReblogStatusOptions options) {
+        if (options is null) throw new ArgumentNullException(nameof(options));
+        return Client.GetResponse(options);
+    }
+
+    /// <summary>
+    /// Reblogs the status with the specified <paramref name="id"/>.
+    /// </summary>
+    /// <param name="id">The ID of the status to reblog.</param>
+    /// <returns>An instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
+    /// <see>
+    ///     <cref>https://docs.joinmastodon.org/methods/statuses/#boost</cref>
+    /// </see>
+    public async Task<IHttpResponse> ReblogStatusAsync(string id) {
+        if (string.IsNullOrWhiteSpace(id)) throw new ArgumentNullException(nameof(id));
+        return await ReblogStatusAsync(new MastodonReblogStatusOptions(id));
+    }
+
+    /// <summary>
+    /// Reblogs the status identified by the specified <paramref name="options"/>.
+    /// </summary>
+    /// <param name="options">The options for the request to the API.</param>
+    /// <returns>An instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
+    /// <see>
+    ///     <cref>https://docs.joinmastodon.org/methods/statuses/#boost</cref>
+    /// </see>
+    public async Task<IHttpResponse> ReblogStatusAsync(MastodonReblogStatusOptions options) {
+        if (options is null) throw new ArgumentNullException(nameof(options));
         return await Client.GetResponseAsync(options);
     }
 
