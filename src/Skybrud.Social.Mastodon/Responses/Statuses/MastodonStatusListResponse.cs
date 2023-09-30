@@ -4,7 +4,7 @@ using Skybrud.Social.Mastodon.Models.Statuses;
 namespace Skybrud.Social.Mastodon.Responses.Statuses;
 
 /// <summary>
-/// Class representing a response from the Toggl API.
+/// Class representing a response from the Mastodon API.
 /// </summary>
 public class MastodonStatusListResponse : MastodonListResponse<MastodonStatus> {
 

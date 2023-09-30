@@ -6,7 +6,7 @@ using Skybrud.Social.Mastodon.Models;
 namespace Skybrud.Social.Mastodon.Responses;
 
 /// <summary>
-/// Class representing a response from the Toggl API.
+/// Class representing a response from the Mastodon API.
 /// </summary>
 public class MastodonResponse : HttpResponseBase {
 

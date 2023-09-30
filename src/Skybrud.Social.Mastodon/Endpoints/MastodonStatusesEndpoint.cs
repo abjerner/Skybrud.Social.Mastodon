@@ -1,5 +1,4 @@
-﻿using Skybrud.Essentials.Http;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Skybrud.Social.Mastodon.Options.Statuses;
 using Skybrud.Social.Mastodon.Responses.Statuses;
 
@@ -53,6 +52,7 @@ public class MastodonStatusesEndpoint {
     public MastodonStatusResponse GetStatus(string id) {
         return new MastodonStatusResponse(Raw.GetStatus(id));
     }
+
     /// <summary>
     /// Returns information about the status identified by the specified <paramref name="options"/>.
     /// </summary>
@@ -81,7 +81,7 @@ public class MastodonStatusesEndpoint {
     /// Returns the timeline of the hashtag identified by the specified <paramref name="options"/>.
     /// </summary>
     /// <param name="options">The options for the request to the API.</param>
-    /// <returns>An instance of <see cref="IHttpResponse"/> representing the response.</returns>
+    /// <returns>An instance of <see cref="MastodonStatusResponse"/> representing the response.</returns>
     /// <see>
     ///     <cref>https://docs.joinmastodon.org/methods/statuses/#get</cref>
     /// </see>

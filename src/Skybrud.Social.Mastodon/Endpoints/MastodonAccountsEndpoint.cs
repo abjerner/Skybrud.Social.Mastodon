@@ -1,5 +1,4 @@
 ﻿using System.Threading.Tasks;
-using Skybrud.Essentials.Http;
 using Skybrud.Social.Mastodon.Options.Accounts;
 using Skybrud.Social.Mastodon.Responses.Accounts;
 
@@ -94,7 +93,7 @@ public class MastodonAccountsEndpoint {
     /// Returns information about the account with the specified username or Webfinger address.
     /// </summary>
     /// <param name="acct">The username or Webfinger address to lookup.</param>
-    /// <returns>An instance of <see cref="IHttpResponse"/> representing the response.</returns>
+    /// <returns>An instance of <see cref="MastodonAccountResponse"/> representing the response.</returns>
     /// <see>
     ///     <cref>https://docs.joinmastodon.org/methods/accounts/#lookup</cref>
     /// </see>
