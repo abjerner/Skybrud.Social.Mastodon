@@ -1,6 +1,9 @@
 ﻿using System.Net;
+using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Http;
 using Skybrud.Essentials.Http.Exceptions;
+using Skybrud.Essentials.Json.Newtonsoft;
+using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 
 namespace Skybrud.Social.Mastodon.Exceptions {
 
@@ -21,6 +24,11 @@ namespace Skybrud.Social.Mastodon.Exceptions {
         /// </summary>
         public HttpStatusCode StatusCode => Response.StatusCode;
 
+        /// <summary>
+        /// Gets the error message (if any) returned by the Mastodon API.
+        /// </summary>
+        public string? Error { get; }
+
         #endregion
 
         #region Constructors
@@ -30,7 +38,19 @@ namespace Skybrud.Social.Mastodon.Exceptions {
         /// </summary>
         /// <param name="response">The instance of <see cref="IHttpResponse"/> representing the raw response.</param>
         public MastodonHttpException(IHttpResponse response) : base("Invalid response received from the Mastodon API (status: " + (int) response.StatusCode + ")") {
+
             Response = response;
+
+            switch (response.ContentType.Split(';')[0]) {
+
+                case "application/json":
+                    if (JsonUtils.TryParseJsonObject(response.Body, out JObject? json)) {
+                        Error = json.GetString("error");
+                    }
+                    break;
+
+            }
+
         }
 
         #endregion
