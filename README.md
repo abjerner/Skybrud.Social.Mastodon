@@ -28,16 +28,16 @@
 
 ## Installation
 
-The package is only available via [**NuGet**](https://www.nuget.org/packages/Skybrud.Social.Mastodon/1.0.0-alpha002). To install the package, you can either use the .NET CLI:
+The package is only available via [**NuGet**](https://www.nuget.org/packages/Skybrud.Social.Mastodon/1.0.0-alpha003). To install the package, you can either use the .NET CLI:
 
 ```
-dotnet add package Skybrud.Social.Mastodon --version 1.0.0-alpha002
+dotnet add package Skybrud.Social.Mastodon --version 1.0.0-alpha003
 ```
 
 or the NuGet Package Manager:
 
 ```
-Install-Package Skybrud.Social.Mastodon -Version 1.0.0-alpha002
+Install-Package Skybrud.Social.Mastodon -Version 1.0.0-alpha003
 ```
 
 
@@ -116,6 +116,85 @@ Although this example uses the [**umbracocommunity.social**](https://umbracocomm
     foreach (var status in response.Body) {
 
         <pre>@status.CreatedAt - @status.Account.DisplayName - @status.Content</pre>
+
+    }
+
+}
+```
+
+### Posting a new status
+
+The example below creates a new `MastodonHttpService` instance from an access token, and then attempts to post two new statuses where the second is a reply to the first:
+
+```cshtml
+@using Skybrud.Social.Mastodon
+@using Skybrud.Social.Mastodon.Exceptions
+@using Skybrud.Social.Mastodon.Models.Statuses
+@using Skybrud.Social.Mastodon.Options.Statuses
+@using Skybrud.Social.Mastodon.Responses.Statuses
+
+@{
+
+    // Initialize a new HTTP service (basically the API wrapper)
+    MastodonHttpService mastodon = MastodonHttpService
+        .CreateFromAccessToken("umbracocommunity.social", "Your access token");
+
+    <h3>First</h3>
+
+    MastodonStatus first;
+
+    try {
+
+        MastodonStatusResponse response = await mastodon.Statuses.PostStatusAsync(new MastodonPostStatusOptions {
+            Status = "Hello world! #test"
+        });
+
+        first = response.Body;
+
+        <pre>@first.JObject</pre>
+
+    } catch (MastodonHttpException ex) {
+
+        <pre>@ex</pre>
+        <pre>@ex.Error</pre>
+        <pre>@ex.Response.Body</pre>
+
+        return;
+
+    } catch (Exception ex) {
+
+        <pre>@ex</pre>
+
+        return;
+
+    }
+
+    <h3>Second</h3>
+
+    try {
+
+        MastodonStatusResponse response = await mastodon.Statuses.PostStatusAsync(new MastodonPostStatusOptions {
+            Status = "Hej verden! #test",
+            InReplyTo = first.Id
+        });
+
+        var second = response.Body;
+
+        <pre>@second.JObject</pre>
+
+    } catch (MastodonHttpException ex) {
+
+        <pre>@ex</pre>
+        <pre>@ex.Error</pre>
+        <pre>@ex.Response.Body</pre>
+
+        return;
+
+    } catch (Exception ex) {
+
+        <pre>@ex</pre>
+
+        return;
 
     }
 
