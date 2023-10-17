@@ -109,6 +109,9 @@ public class MastodonHttpClient : HttpClient {
         // Specified request must have a URL
         if (string.IsNullOrWhiteSpace(request.Url)) throw new PropertyNotSetException(nameof(IHttpRequest.Url));
 
+        // If an access token has been specified, we use it as the bearer token for the "Authorization" header
+        if (!string.IsNullOrWhiteSpace(AccessToken)) request.Authorization = $"Bearer {AccessToken}";
+
         // Append the domain if URL starts with a forward slash
         if (request.Url.StartsWith("/")) {
             if (string.IsNullOrWhiteSpace(Domain)) throw new PropertyNotSetException(nameof(Domain));
