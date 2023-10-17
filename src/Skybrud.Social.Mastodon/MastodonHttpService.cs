@@ -49,6 +49,16 @@ public class MastodonHttpService {
     #region Static methods
 
     /// <summary>
+    /// Creates a new <see cref="MastodonHttpService"/> based on the specified HTTP <paramref name="client"/>.
+    /// </summary>
+    /// <param name="client">The HTTP client.</param>
+    /// <returns>An instance of <see cref="MastodonHttpService"/>.</returns>
+    public static MastodonHttpService CreateFromClient(MastodonHttpClient client) {
+        if (client == null) throw new ArgumentNullException(nameof(client));
+        return new MastodonHttpService(client);
+    }
+
+    /// <summary>
     /// Creates a new <see cref="MastodonHttpService"/> based on the specified <paramref name="domain"/>. This instance
     /// can be used for accessing public information.
     /// </summary>
